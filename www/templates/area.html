@@ -1,0 +1,14 @@
+<ion-view title="区域选择">
+	<ion-content class="has-header">
+	  <div class="list">
+	  	<div ng-repeat="area in areas">
+	  		<div class="item item-divider">
+		    	{{area.name}}
+		  	</div>
+		  	<a class="item" href="#/mansion/{{a.id}}" ng-repeat="a in area.childs">
+			    {{a.name}}
+			  </a>
+	  	</div>
+		</div>
+	</ion-content>
+</ion-view>
