@@ -24,9 +24,6 @@ angular.module('starter.services', [])
     }
   }
 }).factory('Areas', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
   var areas = [
     { 
     	id: 0, name: '城关区',
@@ -70,6 +67,224 @@ angular.module('starter.services', [])
     get: function(areaId) {
       // Simple index lookup
       return mansions[areaId];
+    }
+  }
+}).factory('Foods',function(){
+
+  var cates = [{
+          "cate_id": "1",
+          "cate_code": "",
+          "cate_name": "炒菜",
+          "cate_alias": "",
+          "icon_sign": "",
+          "describe": "",
+          "created": "0",
+          "updated": "0",
+          "sord_no": "50"
+      },
+      {
+          "cate_id": "2",
+          "cate_code": null,
+          "cate_name": "凉菜",
+          "cate_alias": null,
+          "icon_sign": null,
+          "describe": null,
+          "created": null,
+          "updated": null,
+          "sord_no": null
+      },
+      {
+          "cate_id": "3",
+          "cate_code": null,
+          "cate_name": "主食",
+          "cate_alias": null,
+          "icon_sign": null,
+          "describe": null,
+          "created": null,
+          "updated": null,
+          "sord_no": null
+      }
+  ];
+ 
+  var foods = [{
+      "food_id": "1",
+      "food_code": null,
+      "food_name": "酸辣白菜",
+      "cate_id": "1",
+      "describe": null,
+      "status": null,
+      "price": "10.00",
+      "image": '酸辣白菜.jpg',
+      "content": null,
+      "stock": "10",
+      "created": null,
+      "updated": null,
+      "sort_no": null
+  },
+  {
+      "food_id": "2",
+      "food_code": null,
+      "food_name": "松仁苹果炒菠菜",
+      "cate_id": "1",
+      "describe": null,
+      "status": null,
+      "price": "12.00",
+      "image": '松仁苹果炒菠菜.jpg',
+      "content": null,
+      "stock": "10",
+      "created": null,
+      "updated": null,
+      "sort_no": null
+  },
+  {
+      "food_id": "3",
+      "food_code": null,
+      "food_name": "炒凉粉",
+      "cate_id": "1",
+      "describe": null,
+      "status": null,
+      "price": "12.00",
+      "image": '炒凉粉.jpg',
+      "content": null,
+      "stock": "10",
+      "created": null,
+      "updated": null,
+      "sort_no": null
+  },
+  {
+      "food_id": "4",
+      "food_code": null,
+      "food_name": "麻辣孜然小土豆",
+      "cate_id": "1",
+      "describe": null,
+      "status": null,
+      "price": "10.00",
+      "image": '麻辣孜然小土豆.jpg',
+      "content": null,
+      "stock": "10",
+      "created": null,
+      "updated": null,
+      "sort_no": null
+  },
+  {
+      "food_id": "5",
+      "food_code": null,
+      "food_name": "爽口凉拌",
+      "cate_id": "2",
+      "describe": null,
+      "status": null,
+      "price": "8.00",
+      "image": '爽口凉拌.jpg',
+      "content": null,
+      "stock": "100",
+      "created": null,
+      "updated": null,
+      "sort_no": null
+  },
+  {
+      "food_id": "6",
+      "food_code": null,
+      "food_name": "朝鲜辣白菜",
+      "cate_id": "2",
+      "describe": null,
+      "status": null,
+      "price": "8.00",
+      "image": '朝鲜辣白菜.jpg',
+      "content": null,
+      "stock": "100",
+      "created": null,
+      "updated": null,
+      "sort_no": null
+  },
+  {
+      "food_id": "7",
+      "food_code": null,
+      "food_name": "陈皮拌黄瓜",
+      "cate_id": "2",
+      "describe": null,
+      "status": null,
+      "price": "8.00",
+      "image": '陈皮拌黄瓜.jpg',
+      "content": null,
+      "stock": "100",
+      "created": null,
+      "updated": null,
+      "sort_no": null
+  },
+  {
+      "food_id": "8",
+      "food_code": null,
+      "food_name": "鸡蛋烩揪面",
+      "cate_id": "3",
+      "describe": null,
+      "status": null,
+      "price": "6.00",
+      "image": '鸡蛋烩揪面.jpg',
+      "content": null,
+      "stock": "100",
+      "created": null,
+      "updated": null,
+      "sort_no": null
+  },
+  {
+      "food_id": "9",
+      "food_code": null,
+      "food_name": "小窝头",
+      "cate_id": "3",
+      "describe": null,
+      "status": null,
+      "price": "2.00",
+      "image": '小窝头.jpg',
+      "content": null,
+      "stock": "100",
+      "created": null,
+      "updated": null,
+      "sort_no": null
+  }];
+
+  for(var i =0; i < cates.length; i++){
+    cates[i]['foods'] = [];
+    for(var j =0; j < foods.length; j++){
+      if(foods[j]['cate_id'] == cates[i]['cate_id']){
+        cates[i]['foods'].push(foods[j]);
+      }
+    }
+  }
+
+  return {
+    all:function(){
+      return cates;
+    }
+  };
+}).factory('Menus',function(){
+  var menus = {};
+  return {
+    all:function(){
+      return menus;
+    },
+    get:function(id){
+      return menus[id] ? null : menus[id];
+    },
+    set:function(food, num){
+      if(num < 1 && menus[food.food_id]){
+        delete menus[food.food_id];
+        return;
+      }
+      menus[food.food_id] = {
+        food:food,
+        num:num,
+        cost:food.price * num
+      };
+    },
+    sum:function(key){
+      var count = 0;
+      for(var i in menus){
+        count += menus[i][key];
+      }
+      return count;
+    },
+    reset:function(){
+      menus = {};
     }
   }
 });

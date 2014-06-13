@@ -17,5 +17,36 @@
 	opacity: .8;
 	position: absolute;
 	bottom: 0;
-	background-color: #faedc4
+	background-color: #C4E9FA;
+}
+
+.item.active {
+	background-color: #faedc4;
+}
+
+.btn-add{
+	position: absolute;
+	right: 10px;
+	top:25px;
+	background: #fff;
+	border: solid 1px #ddd;
+	opacity: .8;
+}
+
+.btn-add .button-icon {
+	font-size: 16px;
+	color: #666;
+	width: 28px;
+	height: 30px;
+	padding: 0;
+	text-align: center;
+}
+
+.btn-add .span {
+	color: #ce4d11;
+	width: 50px;
+}
+
+.item-thumbnail-left, .item-thumbnail-left .item-content{
+	min-height: inherit;
 }

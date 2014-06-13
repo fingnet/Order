@@ -83,6 +83,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+    .state('order', {
+      url: '/order',
+      templateUrl: 'templates/order.html',
+      controller: 'OrderCtrl'
+    })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/area');
 

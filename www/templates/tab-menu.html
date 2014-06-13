@@ -1,25 +1,25 @@
 <ion-view title="我的菜单">
   <ion-content class="has-header">
-    <div class="card">
+    <div class="list">
 		  <div class="item item-divider">
 		    明细
 		  </div>
-		  <div class="item item-avatar">
-	      <img src="http://ionicframework.com/img/docs/venkman.jpg">
-	      <h2>白菜</h2>
-	      <p>10.0</p>
+		  <div class="item item-avatar" ng-repeat="menu in menus">
+	      <img ng-src="img/{{menu.food.image}}">
+	      <h2>{{menu.food.food_name}}</h2>
+	      <p>￥<span class="assertive">{{menu.food.price}}</span> × {{menu.num}}</p>
 	    </div>
-	    <div class="item item-avatar">
-	      <img src="http://ionicframework.com/img/docs/venkman.jpg">
-	      <h2>白菜</h2>
-	      <p>10.0</p>
+	    <div class="item" ng-hide="cost">
+	    	<p>您还没有点菜，赶快去点餐台点菜吧。</p>
 	    </div>
 		  <div class="item item-divider">
-		    合计：10.00
+		    合计：<strong class="assertive">{{cost}}</strong>元
 		  </div>
-		  <button class="item button button-block button-balanced">
-			  我已经点好了
-			</button>
+		  <div class="item">
+		  	<a class="button button-block button-balanced" href="#order">
+		  	点好了
+				</a>
+		  </div>
 		</div>
   </ion-content>
 </ion-view>
